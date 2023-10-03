@@ -73,7 +73,7 @@ class AuthController {
     try {
       const payload = ({ email: req.body.email, password: req.body.password } = value);
 
-      const user = await User.findOne({ email: payload.email }).select('-password');
+      const user = await User.findOne({ email: payload.email });
 
       if (!user) return res.status(400).json({ message: 'User does not exist' });
 
