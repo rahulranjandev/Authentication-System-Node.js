@@ -14,7 +14,7 @@ COPY bytebeat.live.pem /etc/nginx/ssl/bytebeat.live/
 COPY bytebeat.live.key /etc/nginx/ssl/bytebeat.live/
 
 # Expose ports
-EXPOSE 80
+EXPOSE 80 443
 
 # Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
