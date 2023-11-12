@@ -13,6 +13,10 @@ COPY server.conf /etc/nginx/conf.d/
 COPY bytebeat.live.pem /etc/nginx/ssl/bytebeat.live/
 COPY bytebeat.live.key /etc/nginx/ssl/bytebeat.live/
 
+# Set permissions
+RUN chown -R nginx:nginx /etc/nginx/ssl
+RUN chmod 600 /etc/nginx/ssl/bytebeat.live/bytebeat.live.pem
+
 # Expose ports
 EXPOSE 80 443
 
