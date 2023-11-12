@@ -4,7 +4,7 @@ const router = Router();
 
 import { AuthMiddleware } from '../middlewares/authMiddleware.js';
 import { AuthController } from '../controllers/authController.js';
-import { PasswdController } from '..//controllers/passwdController.js';
+import { PasswdController } from '../controllers/passwdController.js';
 
 const authMiddleware = new AuthMiddleware();
 const Auth = new AuthController();

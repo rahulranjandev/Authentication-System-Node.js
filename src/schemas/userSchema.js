@@ -50,7 +50,7 @@ const updateUserSchema = Joi.object({
     'string.empty': 'Email is required',
     'string.email': 'Email format is invalid',
   }),
-  avatar: Joi.string().uri().allow(null, '').messages({
+  avatar: Joi.string().optional().uri().allow(null, '').messages({
     'string.base': 'Avatar should be a type of text',
     'string.uri': 'Avatar should be a valid URL',
   }),
