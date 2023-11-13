@@ -1,8 +1,8 @@
 FROM nginx:alpine
 
 # Remove the default nginx configurations
-RUN rm /etc/nginx/nginx.conf \
-  && rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/nginx.conf 
+RUN rm /etc/nginx/conf.d/default.conf
 
 # Create necessary directories
 RUN mkdir -p /etc/nginx/ssl/bytebeat.live/
