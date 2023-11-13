@@ -192,5 +192,6 @@ dist
 .svelte-kit
 
 data/
+pm2.config.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,dotenv,git
