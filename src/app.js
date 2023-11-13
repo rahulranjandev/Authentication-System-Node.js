@@ -21,7 +21,7 @@ const app = express();
 // Rate Limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // limit each IP to 10 requests per windowMs
+  max: 30, // limit each IP to 10 requests per windowMs
   standardHeaders: false, // include headers with requests, like X-Forwarded-For, Remote-Addr
   legacyHeaders: false, // include X-Real-IP header and use this IP address instead of the remote address
   message: 'Too many requests from this IP, please try again later.',
