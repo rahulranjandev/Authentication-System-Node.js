@@ -19,6 +19,22 @@ services:
     ports:
       - '3000:3333'
 
+  nginx-server:
+    build:
+      context: ./nginx
+    container_name: nginx-server
+    image: nginx
+    restart: unless-stopped
+
+    depends_on:
+      - api-server
+      
+    networks:
+      - app-network
+
+    ports:
+      - '80:3000'
+
 networks:
   app-network:
     driver: bridge

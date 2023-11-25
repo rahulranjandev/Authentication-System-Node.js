@@ -18,13 +18,18 @@ console.log(`NODE_ENV: ${NODE_ENV}`);
 
 const app = express();
 
+// Trust the X-Forwarded-For header
+app.enable('trust proxy', 1);
+
 // Rate Limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 30, // limit each IP to 10 requests per windowMs
+  max: 10, // limit each IP to 10 requests per windowMs
   standardHeaders: false, // include headers with requests, like X-Forwarded-For, Remote-Addr
   legacyHeaders: false, // include X-Real-IP header and use this IP address instead of the remote address
   message: 'Too many requests from this IP, please try again later.',
+  statusCode: 429,
+  validate: { trustProxy: false },
 });
 
 app.use(limiter);
@@ -150,8 +155,8 @@ app.use((err, req, res, next) => {
 
 // Start Server and Connect to DB
 app.listen(PORT ?? 3333, () => {
-  console.log(`  App is running at http://localhost:${PORT} in ${NODE_ENV} mode`);
-  console.log('  Press CTRL-C to stop');
+  console.log(`App is running at http://localhost:${PORT} in ${NODE_ENV} mode`);
+  console.log('Press CTRL-C to stop');
 
   connectDB();
 });
