@@ -27,6 +27,7 @@ services:
       - ./nginx/server.conf:/etc/nginx/conf.d/default.conf
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     depends_on:
       - api-server
     networks:
@@ -52,6 +53,12 @@ volumes:
     driver_opts:
       type: none
       device: /home/ubuntu/fantasty-v2/views
+      o: bind
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ubuntu/fantasty-v2/dhparam
       o: bind
 
 networks:
