@@ -49,7 +49,7 @@ Make sure you have the following software installed:
 1. Clone this repository or download the source code.
 
 ```bash
-git clone https://github.com/yourusername/authentication-system.git
+git clone https://github.com/rahulranjan937/authentication-system.git
 cd authentication-system
 ```
 
