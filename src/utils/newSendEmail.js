@@ -1,23 +1,9 @@
 import crypto from 'crypto';
-import FormData from 'form-data';
-import Mailgun from 'mailgun.js';
-import {
-  MAILGUN_API_KEY,
-  MAILGUN_DOMAIN,
-  FROM_SUPPORT_EMAIL,
-  SUPPORT_EMAIL,
-  HOST,
-  LOGO_URL,
-} from '../config/config.js';
+import { FROM_SUPPORT_EMAIL, SUPPORT_EMAIL, HOST, LOGO_URL } from '../config/config.js';
 import SendEmail from './awsSES.js';
 import User from '../models/userModel.js';
 
 export class SendEmail {
-  constructor() {
-    this.mailgun = new Mailgun(FormData);
-    this.client = this.mailgun.client({ username: 'api', key: MAILGUN_API_KEY });
-  }
-
   confirmEmail = async (email) => {
     try {
       //  Generate token for email verification link and save it to database
@@ -26,13 +12,15 @@ export class SendEmail {
       await User.findOneAndUpdate({ email: email }, { token: token });
 
       // Create Verification url for email
-      const verificationUrl = `${HOST}/confirm/${token}`;
+      const verificationUrl = `${HOST}/r/confirm/${token}`;
       console.log(verificationUrl);
 
       // Template for email message
       const data = {
-        from: FROM_SUPPORT_EMAIL,
-        to: `${email}`,
+        Source: FROM_SUPPORT_EMAIL,
+        Destination: {
+          ToAddresses: [`${email}`],
+        },
         subject: 'Email Verification',
         html: `<!DOCTYPE html>
         <html
@@ -573,14 +561,8 @@ export class SendEmail {
 
       // Sending email
       try {
-        this.client.messages
-          .create(MAILGUN_DOMAIN, data)
-          .then((msg) => {
-            console.log(msg);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+        const response = await SendEmail(data);
+        console.log(response);
       } catch (err) {
         console.error(err);
       }

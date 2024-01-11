@@ -32,6 +32,9 @@ export const {
   SUPPORT_EMAIL,
   LOGO_URL,
   LARGE_LOGO_URL,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_REGION,
 } = process.env;
 
 if (!MONGODB_URI) {
@@ -80,4 +83,16 @@ if (!FROM_SUPPORT_EMAIL) {
 
 if (!FROM_SENDER_EMAIL) {
   throw new Error('FROM_SENDER_EMAIL is missing');
+}
+
+if (!AWS_ACCESS_KEY_ID) {
+  throw new Error('AWS_ACCESS_KEY_ID is missing');
+}
+
+if (!AWS_SECRET_ACCESS_KEY) {
+  throw new Error('AWS_SECRET_ACCESS_KEY is missing');
+}
+
+if (!AWS_REGION) {
+  throw new Error('AWS_REGION is missing');
 }

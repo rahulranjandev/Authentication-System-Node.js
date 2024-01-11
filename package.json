@@ -6,11 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon --watch src --exec \"npm run start\""
+    "dev": "nodemon --watch src --exec \"npm run start\"",
+    "ses": "node src/utils/awsSES.js"
   },
   "author": "Rahul Ranjan",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.481.0",
     "@sentry/node": "^7.73.0",
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
