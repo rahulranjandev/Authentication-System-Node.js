@@ -9,10 +9,9 @@ import {
   HOST,
   LOGO_URL,
 } from '../config/config.js';
-import SendEmail from './awsSES.js';
 import User from '../models/userModel.js';
 
-export class SendEmail {
+export class SendEmailUtil {
   constructor() {
     this.mailgun = new Mailgun(FormData);
     this.client = this.mailgun.client({ username: 'api', key: MAILGUN_API_KEY });

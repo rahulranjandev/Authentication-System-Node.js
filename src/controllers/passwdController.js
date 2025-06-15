@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs';
 import { forgotPasswordSchema, updatePasswordSchema } from '../schemas/userSchema.js';
-import { SendEmail } from '../utils/sendEmail.js';
+import { SendEmailUtil } from '../utils/sendEmail.js';
 import User from '../models/userModel.js';
 
 export class PasswdController {
   constructor() {
-    this.sendEmail = new SendEmail();
+    this.sendEmail = new SendEmailUtil();
   }
 
   forgotPassword = async (req, res, next) => {

@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import axios from 'axios';
 import User from '../models/userModel.js';
 import { updateUserSchema } from '../schemas/userSchema.js';
-import { SendEmail } from '../utils/sendEmail.js';
+import { SendEmailUtil } from '../utils/sendEmail.js';
 
 /**
  * @todo Get to the user's profile (GET) DONE ✅
@@ -21,7 +21,7 @@ import { SendEmail } from '../utils/sendEmail.js';
 
 export class UserController {
   constructor() {
-    this.sendEmail = new SendEmail();
+    this.sendEmail = new SendEmailUtil();
   }
 
   /**

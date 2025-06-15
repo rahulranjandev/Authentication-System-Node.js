@@ -17,7 +17,7 @@ export default (useJoiError = false) => {
     const method = req.method.toLowerCase();
 
     if (_.includes(_supportedMethods, method) && _.has(Schemas, route)) {
-      const _schema = _.get(Schemas, route);
+      const _schema = _.get(_schema, route);
 
       if (_schema) {
         return Joi.validate(req.body, _schema, _validationOptions, (err, data) => {

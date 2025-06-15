@@ -3,12 +3,12 @@ import { NODE_ENV } from '../config/config.js';
 import { signedToken, cookieOptions } from '../utils/jwt.js';
 import { registerUserSchema, userLoginSchema } from '../schemas/userSchema.js';
 import { GitHub, Google } from '../utils/connectOauth.js';
-import { SendEmail } from '../utils/sendEmail.js';
+import { SendEmailUtil } from '../utils/sendEmail.js';
 import User from '../models/userModel.js';
 
 class AuthController {
   constructor() {
-    this.sendEmail = new SendEmail();
+    this.sendEmail = new SendEmailUtil();
     this.github = new GitHub();
     this.google = new Google();
   }

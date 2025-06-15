@@ -3,7 +3,7 @@ import { FROM_SUPPORT_EMAIL, SUPPORT_EMAIL, HOST, LOGO_URL } from '../config/con
 import SendEmail from './awsSES.js';
 import User from '../models/userModel.js';
 
-export class SendEmail {
+export class newSendEmail {
   confirmEmail = async (email) => {
     try {
       //  Generate token for email verification link and save it to database
