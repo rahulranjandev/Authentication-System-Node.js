@@ -42,8 +42,8 @@ services:
       - web-root:/var/www/html
     depends_on:
       - nginx-server
-    # command: certonly --webroot --webroot-path=/var/www/html --email rahulranjan@bitwisebeat.tech --agree-tos --no-eff-email --staging -d api.bitwisebeat.tech
-    command: certonly --webroot --webroot-path=/var/www/html --email rahulranjan@bitwisebeat.tech --agree-tos --no-eff-email --force-renewal -d api.bitwisebeat.tech
+    # command: certonly --webroot --webroot-path=/var/www/html --email rahulranjan@bytesbeat.tech --agree-tos --no-eff-email --staging -d auth.bytesbeat.tech
+    command: certonly --webroot --webroot-path=/var/www/html --email rahul@mycvbuilders.com --agree-tos --no-eff-email --force-renewal -d auth.bytesbeat.tech
 
 volumes:
   certbot-etc:
